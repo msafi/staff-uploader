@@ -45,12 +45,18 @@ jQuery(function($) {
         .on('complete', function(event, id, name, response, xhr) {
             var $fileEl = $(this).fineUploaderS3("getItemByFileId", id),
                 $viewBtn = $fileEl.find(".view-btn"),
-                key = $(this).fineUploaderS3("getKey", id);
+                key = $(this).fineUploaderS3("getKey", id),
+                $textBox = $fileEl.find('.staff-uploader-link'),
+                $textBoxContainer = $fileEl.find('.staff-uploader-link-container')
+
+                $textBox.click(function() { $(this).select() })
 
             // Add a "view" button to access the uploaded file in S3 if the upload is successful
             if (response.success) {
-                $viewBtn.show();
-                $viewBtn.attr("href", bucketUrl + "/" + key);
+              $viewBtn.show();
+              $textBoxContainer.show();
+              $viewBtn.attr("href", bucketUrl + "/" + key);
+              $textBox.val(bucketUrl + '/' + key);
             }
         })
         .on("credentialsExpired", function() {

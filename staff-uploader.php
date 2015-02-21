@@ -31,8 +31,11 @@ function add_uploader_template() {
 											<button class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</button>
 											<button class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</button>
 											<span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+											<label for="staff-uploader-link" class="staff-uploader-link-container" style="display: none;">Link
+												<input id="staff-uploader-link" type="text" class="staff-uploader-link">
+											</label>
 											<a class="view-btn" target="_blank" style="display: none;">
-													<input type="button" value="View">
+												<input type="button" value="View">
 											</a>
 									</li>
 							</ul>
@@ -48,7 +51,9 @@ function add_uploader_template() {
 
 function load_uploader_styles_scripts() {
 	wp_register_style('fineuploader-4_4_0', plugins_url('staff-uploader/s3.jquery.fineuploader-4.4.0/fineuploader-4.4.0.css') );
+	wp_register_style('staff-uploader-css', plugins_url('staff-uploader/custom.css'));
 	wp_enqueue_style('fineuploader-4_4_0');
+	wp_enqueue_style('staff-uploader-css');
 	wp_enqueue_script('fineuploader-4_4_0_script', plugins_url('staff-uploader/s3.jquery.fineuploader-4.4.0/s3.jquery.fineuploader-4.4.0.js') );
 	wp_enqueue_script('aws-glue', plugins_url('staff-uploader/aws-sdk-glue.js'));
 	wp_enqueue_script('google-auth', plugins_url('staff-uploader/google-auth.js'));
@@ -57,11 +62,11 @@ function load_uploader_styles_scripts() {
 }
 
 function staff_uploader_menu() {
-	add_menu_page('Staff Uploader', 'Staff Uploader', 'manage_options', 'staff-uploader', 'staff_uploader_admin_screen');
+	add_menu_page('Staff Uploader', 'Staff Uploader', 'edit_posts', 'staff-uploader', 'staff_uploader_admin_screen');
 }
 
 function staff_uploader_admin_screen() {
-	if ( !current_user_can( 'manage_options' ) )  {
+	if ( !current_user_can( 'edit_posts' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
@@ -72,10 +77,6 @@ function staff_uploader_admin_screen() {
 
 		<!-- Only lods the content between the "if tags" if you are not running IE9 or older -->
 		<!--[if !IE | gt IE 9]> -->
-		<!-- Required for the Amazon & Facebook JavaScript SDKs -->
-		<div id="amazon-root"></div>
-		<div id="fb-root"></div>
-
 		<div class="row-fluid">
 				<div class="span4">
 						<div class="sign-in-buttons">
