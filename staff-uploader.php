@@ -50,14 +50,14 @@ function add_uploader_template() {
 }
 
 function load_uploader_styles_scripts() {
-	wp_register_style('fineuploader-4_4_0', plugins_url('staff-uploader/s3.jquery.fineuploader-4.4.0/fineuploader-4.4.0.css') );
-	wp_register_style('staff-uploader-css', plugins_url('staff-uploader/custom.css'));
+	wp_register_style('fineuploader-4_4_0', plugins_url('/s3.jquery.fineuploader-4.4.0/fineuploader-4.4.0.css', __FILE__ ),array(), '1.0' );
+	wp_register_style('staff-uploader-css', plugins_url('/custom.css', __FILE__ ),array(), '1.0' );
 	wp_enqueue_style('fineuploader-4_4_0');
 	wp_enqueue_style('staff-uploader-css');
-	wp_enqueue_script('fineuploader-4_4_0_script', plugins_url('staff-uploader/s3.jquery.fineuploader-4.4.0/s3.jquery.fineuploader-4.4.0.js') );
-	wp_enqueue_script('aws-glue', plugins_url('staff-uploader/aws-sdk-glue.js'));
-	wp_enqueue_script('google-auth', plugins_url('staff-uploader/google-auth.js'));
-	wp_enqueue_script('fineuploader-glue', plugins_url('staff-uploader/fineuploader-glue.js'));
+	wp_enqueue_script('fineuploader-4_4_0_script', plugins_url('/s3.jquery.fineuploader-4.4.0/s3.jquery.fineuploader-4.4.0.js', __FILE__ ),array(), '1.0' );
+	wp_enqueue_script('aws-glue', plugins_url('/aws-sdk-glue.js', __FILE__ ),array(), '1.0');
+	wp_enqueue_script('google-auth', plugins_url('/google-auth.js', __FILE__ ),array(), '1.0');
+	wp_enqueue_script('fineuploader-glue', plugins_url('/fineuploader-glue.js', __FILE__ ),array(), '1.0');
 	wp_enqueue_script('aws-sdk', '//sdk.amazonaws.com/js/aws-sdk-2.0.0-rc4.min.js');
 }
 
