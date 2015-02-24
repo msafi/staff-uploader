@@ -27,7 +27,7 @@ jQuery(function($) {
                 var filename = this.getName(id),
                     uuid = this.getUuid(id);
 
-                return qq.format("{}/{}.{}", s3DemoGlobals.userId, uuid, qq.getExtension(filename));
+                return qq.format("ghost-rider/{}/{}.{}", s3DemoGlobals.userId, uuid, qq.getExtension(filename));
             }
         },
         chunking: {
@@ -46,17 +46,17 @@ jQuery(function($) {
             var $fileEl = $(this).fineUploaderS3("getItemByFileId", id),
                 $viewBtn = $fileEl.find(".view-btn"),
                 key = $(this).fineUploaderS3("getKey", id),
-                $textBox = $fileEl.find('.staff-uploader-link'),
-                $textBoxContainer = $fileEl.find('.staff-uploader-link-container')
+                copyToClipboardButton = $('.staff-uploader-copy-to-clipboard')
 
-                $textBox.click(function() { $(this).select() })
+                copyToClipboardButton.click(function() {
+                  window.prompt("Copy to clipboard: Ctrl+C, Enter", bucketUrl + '/' + key)
+                })
 
             // Add a "view" button to access the uploaded file in S3 if the upload is successful
             if (response.success) {
               $viewBtn.show();
-              $textBoxContainer.show();
+              copyToClipboardButton.show();
               $viewBtn.attr("href", bucketUrl + "/" + key);
-              $textBox.val(bucketUrl + '/' + key);
             }
         })
         .on("credentialsExpired", function() {

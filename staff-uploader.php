@@ -31,12 +31,11 @@ function add_uploader_template() {
 											<button class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</button>
 											<button class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</button>
 											<span class="qq-upload-status-text-selector qq-upload-status-text"></span>
-											<label for="staff-uploader-link" class="staff-uploader-link-container" style="display: none;">Link
-												<input id="staff-uploader-link" type="text" class="staff-uploader-link">
-											</label>
 											<a class="view-btn" target="_blank" style="display: none;">
-												<input type="button" value="View">
+												<input type="button" value="View the file">
 											</a>
+
+											<input type="button" value="View the link" class="staff-uploader-copy-to-clipboard view-btn" style="display: none;">
 									</li>
 							</ul>
 					</div>
