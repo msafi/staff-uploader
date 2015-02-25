@@ -17,7 +17,7 @@ jQuery(function($) {
 
                 // Get S3 credentials
                 s3DemoGlobals.assumeRoleWithWebIdentity({
-                    roleArn: "arn:aws:iam::901881000271:role/uploader",
+                    roleArn: "arn:aws:iam::164437588128:role/gaming_soon_developer_upload",
                     idToken: authResult.id_token
                 });
 

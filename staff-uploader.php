@@ -31,9 +31,12 @@ function add_uploader_template() {
 											<button class="qq-upload-cancel-selector qq-upload-cancel" href="#">Cancel</button>
 											<button class="qq-upload-retry-selector qq-upload-retry" href="#">Retry</button>
 											<span class="qq-upload-status-text-selector qq-upload-status-text"></span>
-											<a class="view-btn" target="_blank" style="display: none;">
-												<input type="button" value="View the file">
-											</a>
+
+                      <span class="staff-uploader-links" style="display: none;">
+                        <a target="_blank">View file</a>
+
+                        <a target="_blank">View manifest</a>
+                      </span>
 
 											<input type="button" value="View the link" class="staff-uploader-copy-to-clipboard view-btn" style="display: none;">
 									</li>
@@ -58,6 +61,7 @@ function load_uploader_styles_scripts() {
 	wp_enqueue_script('google-auth', plugins_url('/google-auth.js', __FILE__ ),array(), '1.0');
 	wp_enqueue_script('fineuploader-glue', plugins_url('/fineuploader-glue.js', __FILE__ ),array(), '1.0');
 	wp_enqueue_script('aws-sdk', '//sdk.amazonaws.com/js/aws-sdk-2.0.0-rc4.min.js');
+	wp_enqueue_script('lodash', '//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.3.1/lodash.min.js');
 }
 
 function staff_uploader_menu() {
@@ -72,7 +76,7 @@ function staff_uploader_admin_screen() {
 ?>
 
 <div class="wrapper">
-		<h2 class="demo-title">AppAdvice staff file uploader</h2>
+		<h2 class="demo-title">AppAdvice Staff File Uploader</h2>
 
 		<!-- Only lods the content between the "if tags" if you are not running IE9 or older -->
 		<!--[if !IE | gt IE 9]> -->
@@ -85,11 +89,10 @@ function staff_uploader_admin_screen() {
 									<span
 										class="g-signin"
 										data-callback="s3GoogleOauthHandler"
-										data-clientid="404616317148-4j6lk78a2ltlkqbsv63o7v4ia5ntqgbg.apps.googleusercontent.com"
+										data-clientid="1026884566589-phgrus0dftqmmijanahpnkl37fmrqoe1.apps.googleusercontent.com"
 										data-cookiepolicy="single_host_origin"
 										data-requestvisibleactions="http://schemas.google.com/AddActivity"
-										data-scope="https://www.googleapis.com/auth/plus.login"
-										data-approvalprompt="force">
+										data-scope="https://www.googleapis.com/auth/plus.login">
 									</span>
 								</div>
 						</div>
